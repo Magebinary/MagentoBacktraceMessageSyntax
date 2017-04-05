@@ -1,0 +1,19 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Magento Error Message
+scopeName: source.errormessage
+fileTypes: []
+uuid: 519af72c-98b6-4b08-9592-b59c5dd3a7f8
+
+patterns:
+- comment: Order of the Message
+  name: order.other.errormessage
+  begin: (^\#\d*)\s+([\S\/]+)
+  beginCaptures:
+    '1': {name: keyword.other.errormessage}
+    '2': {name: string.other.errormessage}
+  end: ^
+  patterns:
+  - include: source.php
+  - name: support.other.errormessage
+...

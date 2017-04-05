@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array/>
+	<key>name</key>
+	<string>Magento Error Message</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>begin</key>
+			<string>(^\#\d*)\s+([\S\/]+)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.errormessage</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>string.other.errormessage</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Order of the Message</string>
+			<key>end</key>
+			<string>^</string>
+			<key>name</key>
+			<string>order.other.errormessage</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.php</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>support.other.errormessage</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.errormessage</string>
+	<key>uuid</key>
+	<string>519af72c-98b6-4b08-9592-b59c5dd3a7f8</string>
+</dict>
+</plist>
