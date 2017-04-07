@@ -7,14 +7,14 @@
 		<string>log</string>
 	</array>
 	<key>name</key>
-	<string>Magento Error Message</string>
+	<string>Magento Backtrace Message</string>
 	<key>patterns</key>
 	<array>
 		<dict>
 			<key>match</key>
 			<string>(^\#\d*|\&gt;\#\d*)</string>
 			<key>name</key>
-			<string>keyword.other.errormessage</string>
+			<string>keyword.other.backtracemessage</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -24,27 +24,32 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.class.errormessage</string>
+					<string>support.class.backtracemessage</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.class.errormessage</string>
+					<string>entity.name.class.backtracemessage</string>
 				</dict>
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>comment.line.class.errormessage</string>
+					<string>comment.line.class.backtracemessage</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>called at</string>
+			<string>(called at)\s+\[(\S+)\]</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.class.errormessage</string>
+					<string>support.class.backtracemessage</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>string.location.backtracemessage</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -63,7 +68,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>string.location.errormessage</string>
+					<string>string.location.backtracemessage</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -78,7 +83,7 @@
 		</dict>
 	</array>
 	<key>scopeName</key>
-	<string>source.errormessage</string>
+	<string>source.backtracemessage</string>
 	<key>uuid</key>
 	<string>519af72c-98b6-4b08-9592-b59c5dd3a7f8</string>
 </dict>

@@ -1,28 +1,29 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
 ---
-name: Magento Error Message
-scopeName: source.errormessage
+name: Magento Backtrace Message
+scopeName: source.backtracemessage
 fileTypes: [log]
 uuid: 519af72c-98b6-4b08-9592-b59c5dd3a7f8
 
 patterns:
 - match: (^\#\d*|\>\#\d*)
-  name: keyword.other.errormessage
+  name: keyword.other.backtracemessage
 
 - begin: (\s+[a-zA-Z_]+)(\[([a-zA-Z_]+)\])?(\#\w*\#)
   beginCaptures:
-    "1" : {name: support.class.errormessage}
-    "3" : {name: entity.name.class.errormessage}
-    "4" : {name: comment.line.class.errormessage}
-  end: called at
+    "1" : {name: support.class.backtracemessage}
+    "3" : {name: entity.name.class.backtracemessage}
+    "4" : {name: comment.line.class.backtracemessage}
+  end: (called at)\s+\[(\S+)\]
   endCaptures:
-    "0" : {name: support.class.errormessage}
+    "1" : {name: support.class.backtracemessage}
+    "2" : {name: string.location.backtracemessage}
   patterns:
   - include: source.php
 
 - begin: (\s+\/\S+\:)\s
   beginCaptures:
-    "1" : {name: string.location.errormessage}
+    "1" : {name: string.location.backtracemessage}
   end: ^
   patterns:
   - include: source.php
