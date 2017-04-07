@@ -3,42 +3,76 @@
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
-	<array/>
+	<array>
+		<string>log</string>
+	</array>
 	<key>name</key>
 	<string>Magento Error Message</string>
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>match</key>
+			<string>(^\#\d*|\&gt;\#\d*)</string>
+			<key>name</key>
+			<string>keyword.other.errormessage</string>
+		</dict>
+		<dict>
 			<key>begin</key>
-			<string>(^\#\d*)\s+([\S\/]+)</string>
+			<string>(\s+[a-zA-Z_]+)(\[([a-zA-Z_]+)\])?(\#\w*\#)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.errormessage</string>
+					<string>support.class.errormessage</string>
 				</dict>
-				<key>2</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>string.other.errormessage</string>
+					<string>entity.name.class.errormessage</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.class.errormessage</string>
 				</dict>
 			</dict>
-			<key>comment</key>
-			<string>Order of the Message</string>
 			<key>end</key>
-			<string>^</string>
-			<key>name</key>
-			<string>order.other.errormessage</string>
+			<string>called at</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.errormessage</string>
+				</dict>
+			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
 					<string>source.php</string>
 				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\s+\/\S+\:)\s</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.other.errormessage</string>
+					<string>string.location.errormessage</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>^</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.php</string>
 				</dict>
 			</array>
 		</dict>
