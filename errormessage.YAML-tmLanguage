@@ -9,17 +9,19 @@ patterns:
 - match: (^\#\d*|\>\#\d*)
   name: keyword.other.backtracemessage
 
-- begin: (\s+[a-zA-Z_]+)(\[([a-zA-Z_]+)\])?(\#\w*\#)
+
+- begin: (\s+[a-zA-Z0-9_]+)(\[([a-zA-Z_]+)\])?(\#[\w]*\#)
   beginCaptures:
     "1" : {name: support.class.backtracemessage}
     "3" : {name: entity.name.class.backtracemessage}
     "4" : {name: comment.line.class.backtracemessage}
-  end: (called at)\s+\[(\S+)\]
+  end: (ed at)\s+\[(\S+)\]
   endCaptures:
     "1" : {name: support.class.backtracemessage}
     "2" : {name: string.location.backtracemessage}
   patterns:
-  - include: source.php
+  - include: '#commenttext'
+  # - include: source.php
 
 - begin: (\s+\/\S+\:)\s
   beginCaptures:
@@ -27,4 +29,24 @@ patterns:
   end: ^
   patterns:
   - include: source.php
+
+repository:
+  commenttext:
+    patterns:
+      # - match: (\#[\w]*\#)
+      #   name: comment.block.commenttext.backtracemessage
+      # - include: source.php
+    - begin: (->\w*)|(\#)
+      beginCaptures:
+        "1" : {name: support.function.commenttext.backtracemessage}
+        "2" : {name: comment.block.commenttext.backtracemessage}
+      end: (\#\w*)|(call)
+      endCaptures:
+        "1" : {name: comment.block.commenttext.backtracemessage}
+        "2" : {name: support.class.commenttext.backtracemessage}
+      patterns:
+      - name: storage.class.commenttext.backtracemessage
+        match: \&\w*
+
+      # - include: source.php
 ...
